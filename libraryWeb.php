@@ -2,7 +2,7 @@
 <html>
     <body>
     <div style="text-align:center;">
-        <h1>Libray</h1>
+        <h1>Library</h1>
         <p>Access Type</p>
         <!--goes to log in for Staff-->
         <a href="staffLogIn.php">
