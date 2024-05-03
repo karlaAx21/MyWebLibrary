@@ -1,0 +1,52 @@
+DROP DATABASE IF EXISTS library;
+
+CREATE DATABASE library;
+
+USE library;
+CREATE TABLE books (
+    isbn VARCHAR(20) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publisher VARCHAR(255),
+    genre VARCHAR(100),
+    num_copies INT,
+    books_out INT DEFAULT 0,
+    books_in INT DEFAULT 0
+);
+
+CREATE TABLE staff (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ssn VARCHAR(20) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(255),
+    username varchar(255) not null,
+    pasword varchar(255) not null,
+    address VARCHAR(255)
+);
+
+CREATE TABLE library_members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    book1 VARCHAR(20),
+    book2 VARCHAR(20),
+    username varchar(255) not null,
+    pasword varchar(255) not null,
+    foreign key (book1) references books(isbn),
+    foreign key (book2) references books(isbn)
+);
+
+insert into books (isbn, title, author, publisher, genre, num_copies, books_in, books_out) values ('1234567891234','Tilte1','author1', 'publisher1', 'fiction', 10, 9, 1);
+insert into books (isbn, title, author, publisher, genre, num_copies, books_in, books_out) values ('1234512391234','Tilte2','author2', 'publisher2', 'fiction', 10, 10, 0);
+insert into books (isbn, title, author, publisher, genre, num_copies, books_in, books_out) values ('9264567891234','Tilte3','author3', 'publisher3', 'fiction', 10, 9, 1);
+insert into books (isbn, title, author, publisher, genre, num_copies, books_in, books_out) values ('1234567897143','Tilte4','author4', 'publisher4', 'fiction', 10, 10, 0);
+
+insert into staff (ssn, phone, name, email, username, pasword, address) values ('123-02-432','734234874', 'StaffName1', 'LiberyStaff1@email.com', 'LStaff1', 'pasword1', 'address1');
+insert into staff (ssn, phone, name, email, username, pasword, address) values ('123-02-672','734234123', 'StaffName2', 'LiberyStaff2@email.com', 'LStaff2', 'pasword2', 'address2');
+insert into staff (ssn, phone, name, email, username, pasword, address) values ('183-02-432','731234874', 'StaffName3', 'LiberyStaff3@email.com', 'LStaff3', 'pasword3', 'address3');
+
+insert into library_members (name, address,username, pasword, book1, book2) values ('member1', 'address01', 'MemberL1', 'mpasword1','1234512391234','9264567891234');
+insert into library_members (name, address,username, pasword) values ('member2', 'address02', 'MemberL2', 'mpasword2');
+insert into library_members (name, address,username, pasword) values ('member3', 'address03', 'MemberL3', 'mpasword3');
+insert into library_members (name, address,username, pasword) values ('member3', 'address03', 'MemberL3', 'mpasword3');
